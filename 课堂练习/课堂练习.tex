@@ -1,0 +1,92 @@
+\documentclass[12pt,a4paper]{ctexart}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx,subfig} 
+\usepackage{float}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\R}{\mathbb{R}}
+\title{\heiti 2023.12.20 课堂练习}
+\date{}
+\begin{document}
+\maketitle
+\subsection*{question1}
+下面的集合哪些是凸集？
+\begin{itemize}
+    \item[(a)] 平板，即形如$\{\bs{x}\in\R|\alpha \leq \bs{a}^T\bs{x} \leq \beta\}$的集合。
+    \item[(b)] 矩形，即形如$\{\bs{x} \in \R | \alpha_i \leq \bs{x}_i \leq \beta,i=1,\ldots,n\}$的集合。当$n \geq 2$时，矩形也称为超矩形。
+    \item[(c)] 楔形，即$\{\bs{x}\in\R^n|\bs{a}_1^T\bs{x}\leq b_1,\bs{a_2}^T\bs{x}\leq b_2\}$。
+    \item[(d)] 距离给定点比距离给定集合近的点构成的集合，即：
+    \begin{align*}
+    \{\bs{x}|\ ||\bs{x}-\bs{x}_0||_2 \leq ||\bs{x}-\bs{y}||_2,\forall \bs{y} \in \mathcal{S}\}
+    \end{align*}
+    其中$\mathcal{S} \subset \R^n$。
+    \item[(e)] 距离一个集合比另一个集合更近的点的集合，即：
+    \begin{align*}
+    \{\bs{x}|\bs{\rm{dist}}(\bs{x},\mathcal{S})\leq \bs{\rm{dist}}(\bs{x},\mathcal{T})\}
+    \end{align*}
+    其中$\mathcal{S},\mathcal{T} \subset \R^n$，$\bs{\rm{dist}}=\inf\limits_{\bs{z}}\{||\bs{x}-\bs{z}||_2|\bs{z} \in \mathcal{S}\}$
+\end{itemize}
+\subsection*{solve1}
+有以下熟知结论：
+\begin{itemize}
+\item 仿射集合，即形如$\bs{A}\bs{x}=\bs{b},\bs{A}\bs{x}\leq \bs{b},\bs{a}^T\bs{x}=b,\bs{a}^T\bs{x}\leq b$的集合一定是凸集。
+\item 凸集的交与和仍然是凸集。
+\end{itemize}
+容易看出$(a),(b),(c)$满足以上条件，则它们都是凸集。下面证明$(d)$是凸集，而$(e)$不是凸集。\\
+(d) 根据内积空间的定义有
+$||\bs{x}-\bs{x}_0||_2=\sqrt{(\bs{x}-\bs{x}_0)^T(\bs{x}-\bs{x}_0)}=\sqrt{(\bs{x}^T\bs{x}-2\bs{x}^T\bs{x}_0+\bs{x}_0^T\bs{x}_0)}$，
+$||\bs{x}-\bs{y}||_2=\sqrt{(\bs{x}-\bs{y})^T(\bs{x}-\bs{y})}=\sqrt{(\bs{x}^T\bs{x}-2\bs{x}^T\bs{y}+\bs{y}^T\bs{y})}$。\\
+则$||\bs{x}-\bs{x}_0||_2 \leq ||\bs{x}-\bs{y}||_2 \Leftrightarrow \sqrt{(\bs{x}^T\bs{x}-2\bs{x}^T\bs{x}_0+\bs{x}_0^T\bs{x}_0)} \leq \sqrt{(\bs{x}^T\bs{x}-2\bs{x}^T\bs{y}+\bs{y}^T\bs{y})}
+\Leftrightarrow 2\bs{x}^T(\bs{x}_0-\bs{y})+\bs{y}^T\bs{y}-\bs{x}_0^T\bs{x}_0 \geq 0$。这构成了一个关于$\bs{x}$的仿射集合，并恰好是半空间的定义，所以是凸集。\\
+(e)
+若$\mathcal{S}$为有限集（无限集情况类似），不妨令$\mathcal{S}=\{\bs{s}_1,\ldots,\bs{s}_n\}$，则：
+\begin{align*}
+    \{\bs{x}|\bs{\rm{dist}}(\bs{x},\mathcal{S})\leq \bs{\rm{dist}}(\bs{x},\mathcal{T})\}
+    =\bigcup\limits_{i=1}^{n} \{\bs{x}|\ ||\bs{x}-\bs{s}_i||_2 \leq ||\bs{x}-\bs{t}||_2,\forall \bs{t} \in \mathcal{T}\}
+    =\bigcup\limits_{i=1}^{n} \mathcal{X}_i
+\end{align*}
+根据$(d)$可知$\mathcal{X}_i$是凸集，而凸集的并集不一定是凸集，证毕。\\
+事实上对于本题可以举出以下反例，令$\mathcal{S}=\{-1,1\},\mathcal{T}=\{0\}$，
+那么$\{x|\bs{\rm{dist}}(x,\mathcal{S})\leq \bs{\rm{dist}}(x,\mathcal{T})\}=(-\infty,-\frac{1}{2}) \cup (\frac{1}{2},+\infty)$，
+这显然不是凸集。
+\subsection*{question2}
+假设$f:\R \rightarrow \R$是一个凸函数，$a,b \in \rm{domf},a\leq b$。
+\begin{itemize}
+    \item[(a)] 证明对于任意$x\in[a,b]$，下式成立
+    \begin{align*}
+    f(x)\leq \frac{b-x}{b-a}f(a)+\frac{x-a}{b-a}f(b)
+    \end{align*}
+    \item[(b)] 证明对于任意$x\in(a,b)$，下式成立
+    \begin{align*}
+    \frac{f(x)-f(a)}{x-a} \leq \frac{f(b)-f(a)}{b-a}\leq \frac{f(b)-f(x)}{b-x}
+    \end{align*}
+    \item[(c)] 假设$f$可微，基于$(b)$的推论证明下式：
+    \begin{align*}
+    f'(a)\leq \frac{f(b)-f(a)}{b-a} \leq f'(b)
+    \end{align*} 
+\end{itemize}
+
+\subsection*{solve2}
+\begin{itemize}
+    \item[(a)]回顾凸函数的的定义$\forall \bs{x},\bs{y} \in \rm{domf},\theta \in [0,1],f(\theta \bs{x}+(1-\theta)\bs{y}) \leq \theta f(\bs{x})+(1-\theta)f(\bs{y})$，
+    并注意到$\frac{b-x}{b-a}+\frac{x-a}{b-a}=1$，那么有：
+    \begin{align*}
+        f(x)=f(\frac{b-x}{b-a} a+\frac{x-a}{b-a} b)\leq \frac{b-x}{b-a}f(a)+\frac{x-a}{b-a}f(b)
+    \end{align*}
+    \item[(b)] 把式$(a)$的式子带入不等式两端即证。
+    \item[(c)] 由于$f$可微，那么$f'(a),f'(b)$存在，且有$f'_+(a)=f'(a),f'_-(b)=f'(b)$。
+    思路1，根据$(b)$分别对不等式在$a,b$处左右两边取极限：
+    \begin{align*}
+        f'(a)=f'_+(a)=\lim\limits_{x \to a^+}\frac{f(x)-f(a)}{x-a} \leq \lim\limits_{x \to a^+}\frac{f(b)-f(a)}{b-a}=\frac{f(b)-f(a)}{b-a}\\
+        f'(b)=f'_-(b)=\lim\limits_{x \to b^-}\frac{f(b)-f(x)}{b-x} \geq \lim\limits_{x \to b^-}\frac{f(b)-f(a)}{b-a}=\frac{f(b)-f(a)}{b-a} 
+    \end{align*}
+    思路2：联想凸函数的一阶性质$(\nabla f(\bs{x})-\nabla f(\bs{y}))^T(\bs{x}-\bs{y}) \geq 0$与凸函数仅有极小值点的特征，
+    可知$f(x)$的导数$f'(x)$是单调递增的，又根据拉格朗日中值定理：
+    \begin{align*}
+        \frac{f(b)-f(a)}{b-a}=f'(\xi),\ a \leq \xi \leq b
+    \end{align*}
+    可得$f'(a) \leq f'(\xi) \le f'(b)$。
+
+\end{itemize}
+\end{document}
