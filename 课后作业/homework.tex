@@ -294,7 +294,7 @@ g(\boldsymbol{\nu})=\left \{
 此时包含两个未知变量$\boldsymbol{\lambda}_1$、$\boldsymbol{\lambda}_2$，无法得到显示解。\\
 令$\boldsymbol{c}=[c_1,\ldots,c_n]^T$，如果$c_i<0$,则$x_i=l_i$；如果$c_i>0$，则$x_i=u_i$；如果$c_i=0$，则$x_i$为符合约束条件的任意值都可以。那么显示解为：
 \begin{align*}
-\min\limits_{\boldsymbol{x}} \boldsymbol{c}^T\boldsymbol{x}=\sum\limits_{c_i\geq 0,c_i \in \boldsymbol{c}}c_i l_i+\sum\limits_{c_j<0,c_j \in \boldsymbol{c}}c_j u_j
+\min\limits_{\boldsymbol{x}} \boldsymbol{c}^T\boldsymbol{x}=\sum\limits_{c_i\leq 0,c_i \in \boldsymbol{c}}c_i l_i+\sum\limits_{c_j>0,c_j \in \boldsymbol{c}}c_j u_j
 \end{align*}
 \item[(d)] 
     \begin{align*}
