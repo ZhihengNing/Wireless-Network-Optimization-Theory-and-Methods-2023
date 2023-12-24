@@ -80,7 +80,7 @@ $f(x)\triangleq \max\limits_{k}\{\boldsymbol{b}\}=b_1=\boldsymbol{a}_1^T \boldsy
         0 & 1 \\
         1 & 0
     \end{bmatrix} 
-     $是不定的， 所以非凸函数，非凹函数，是拟凸函数。
+     $是不定的， 所以非凸函数，非凹函数。
     而其$\alpha$下水平集$\mathcal{C}_{\alpha}=\{(x_1,x_2) \in \mathbb{R}^2_{++} | x_1x_2\leq \alpha\}$
     不是凸集，所以非拟凸函数；其$\alpha$上水平集$\mathcal{S}_{\alpha}=\{(x_1,x_2) \in \mathbb{R}^2_{++} | x_1x_2\geq \alpha\}$
     是凸集，所以是拟凹函数。
@@ -91,7 +91,7 @@ $f(x)\triangleq \max\limits_{k}\{\boldsymbol{b}\}=b_1=\boldsymbol{a}_1^T \boldsy
         \frac{2}{x_1^3x_2} & \frac{1}{x_1^2x_2^2} \\
         \frac{1}{x_1^2x_2^2} & \frac{2}{x_1x_2^3}
     \end{bmatrix} \succ 0
-    $，是凸函数，非凹函数，是拟凸函数。而其$\alpha$上水平集$\mathcal{C}_{\alpha}=\{(x_1,x_2) \in \mathbb{R}^2_{++} | x_1x_2\leq \alpha\}$
+    $，是凸函数，非凹函数，是拟凸函数。而其$\alpha$上水平集$\mathcal{S}_{\alpha}=\{(x_1,x_2) \in \mathbb{R}^2_{++} | x_1x_2\leq \alpha\}$
     不是凸集，所以非拟凹函数。\\
     \textbf{结论}：是凸函数，非凹函数，是拟凸函数，非拟凹函数。
     \item[(d)] $\nabla^2f(x_1,x_2)=
@@ -108,7 +108,7 @@ $f(x)\triangleq \max\limits_{k}\{\boldsymbol{b}\}=b_1=\boldsymbol{a}_1^T \boldsy
         \frac{2}{x_2} & -\frac{2x_1}{x_2^2} \\
         -\frac{2x_1}{x_2^2} & \frac{2x_1^2}{x_2^3}
     \end{bmatrix} \succeq 0
-    $，是凸函数，非凹函数，是拟凸函数。而其$\alpha$上水平集$\mathcal{S}_{\alpha}=\{(x_1,x_2) \in \mathbb{R}^2_{++} | \frac{x_1^2}{x_2}\geq \alpha\}$
+    $，是凸函数，非凹函数，是拟凸函数。而其$\alpha$上水平集$\mathcal{S}_{\alpha}=\{(x_1,x_2) \in \mathbb{R}\times\mathbb{R}_{++} | \frac{x_1^2}{x_2}\geq \alpha\}$
     不是凸集，所以非拟凹函数。\\
     \textbf{结论}：是凸函数，非凹函数，是拟凸函数，非拟凹函数。
     \item[(f)]
@@ -232,7 +232,7 @@ g(\boldsymbol{\nu})=\left \{
 \begin{align*}
     \max\limits_{\boldsymbol{\nu}} g(\boldsymbol{\nu})=\left \{
     \begin{array}{ll}
-    +\infty &\boldsymbol{b} \notin R(\boldsymbol{A})\\
+    +\infty &\boldsymbol{b} \notin \mathcal{R}(\boldsymbol{A})\\
     \boldsymbol{c}^T (\boldsymbol{A})^{+}\boldsymbol{b} &\boldsymbol{c}+\boldsymbol{A}^T \boldsymbol{\nu}=\boldsymbol{0}\\
     -\infty &\rm{otherwise}
     \end{array}
@@ -244,7 +244,7 @@ g(\boldsymbol{\nu})=\left \{
     \min\limits_{\boldsymbol{x}} \boldsymbol{c}^T\boldsymbol{x}
     =\left \{
     \begin{array}{ll}
-    +\infty &\boldsymbol{b} \notin R(\boldsymbol{A})\\
+    +\infty &\boldsymbol{b} \notin \mathcal{R}(\boldsymbol{A})\\
     \boldsymbol{c}^T (\boldsymbol{A})^{+}\boldsymbol{b} &\boldsymbol{c}+\boldsymbol{A}^T \boldsymbol{\nu}=\boldsymbol{0}\\
     -\infty &\rm{otherwise}
     \end{array}
@@ -439,7 +439,7 @@ $\boldsymbol{S}=2\boldsymbol{W}+\rm{diag}\{\boldsymbol{\nu}\}$。\\
     图 \ref{f_0(x)}给出了函数$f_0(x)=x^2+1$的图像。\\
     \begin{figure}[!h] %h表示就在此处插入。
         \centering % 居中
-        \includegraphics[scale=0.5]{f_0(x).png} %在tex所在文件夹下面创建一个名为figs的文件夹，并把所有要用的照片放这里。当然你也可以选择使用绝对路径。
+        \includegraphics[scale=0.5]{image/f_0(x).png} %在tex所在文件夹下面创建一个名为figs的文件夹，并把所有要用的照片放这里。当然你也可以选择使用绝对路径。
         \caption{$f_0(x)=x^2+1$函数图像}
         \label{f_0(x)} % 为每个图片设置一个标识
     \end{figure}
@@ -455,14 +455,14 @@ $\boldsymbol{S}=2\boldsymbol{W}+\rm{diag}\{\boldsymbol{\nu}\}$。\\
         \centering
         %\includegraphics[width=3in]{fig5}
         \subfloat[$L(x,0.5)$]{
-            \includegraphics[scale=0.5]{L(x,0.5).png}}
+            \includegraphics[scale=0.5]{image/L(x,0.5).png}}
         \subfloat[$L(x,2)$]{
-            \includegraphics[scale=0.5]{L(x,2).png}}
+            \includegraphics[scale=0.5]{image/L(x,2).png}}
         \\
         \subfloat[$L(x,6)$]{
-            \includegraphics[scale=0.5]{L(x,6).png}}
+            \includegraphics[scale=0.5]{image/L(x,6).png}}
         \subfloat[$L(x,\frac{\sqrt{85}+9}{2})$]{
-            \includegraphics[scale=0.5]{L(x,x_0).png}}
+            \includegraphics[scale=0.5]{image/L(x,x_0).png}}
         \caption{$L(x,\lambda)$函数图像}
         \label{拉格朗日函数}
     \end{figure}
@@ -475,7 +475,7 @@ $\boldsymbol{S}=2\boldsymbol{W}+\rm{diag}\{\boldsymbol{\nu}\}$。\\
     式\eqref{对偶函数g表达式}给出了对偶函数g的表达式，图\ref{对偶函数g}给出了对偶函数g的大致图像。
     \begin{figure}[!h] %h表示就在此处插入。
         \centering % 居中
-        \includegraphics[scale=0.5]{g(lambda).png} %在tex所在文件夹下面创建一个名为figs的文件夹，并把所有要用的照片放这里。当然你也可以选择使用绝对路径。
+        \includegraphics[scale=0.5]{image/g(lambda).png} %在tex所在文件夹下面创建一个名为figs的文件夹，并把所有要用的照片放这里。当然你也可以选择使用绝对路径。
         \caption{$\mathrm{g}$函数图像}
         \label{对偶函数g} % 为每个图片设置一个标识
         \end{figure}
